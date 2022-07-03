@@ -3,12 +3,12 @@ use std::cmp::Ordering;
 use std::io;
 
 fn main() {
-    let mut high_score: i32 = 1000;
+    let mut high_score: u16 = 1000;
     loop {
         println!("Guess MY number");
 
-        let secret_number = rand::thread_rng().gen_range(1..=100);
-        let mut guess_amount = 0;
+        let secret_number: u8 = rand::thread_rng().gen_range(1..=100);
+        let mut guess_amount: u16 = 0;
         loop {
             println!("Enter Guess:");
 
@@ -18,10 +18,10 @@ fn main() {
                 .read_line(&mut guess)
                 .expect("Unable to read");
 
-            let guess: u32 = match guess.trim().parse() {
+            let guess: u8 = match guess.trim().parse() {
                 Ok(num) => num,
                 Err(_) => {
-                    println!("Enter a number idiot");
+                    println!("Enter a real number idiot");
                     continue;
                 },
             };
